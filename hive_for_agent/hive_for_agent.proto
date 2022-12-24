@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "github.com/pikvm/cloud-api/hive_for_agent";
+package hive_for_agent;
+
+import "google/protobuf/empty.proto";
+
+message AgentInfo {
+    string name = 1;
+}
+
+message AvailableProxies {
+    message ProxyInfo {
+        string proxy_endpoint = 1;
+    }
+
+    repeated ProxyInfo available_proxies = 1;
+}
+
+service HiveForAgent {
+    rpc RegisterAgent (AgentInfo) returns (google.protobuf.Empty);
+    rpc GetAvailableProxies (google.protobuf.Empty) returns (AvailableProxies);
+}

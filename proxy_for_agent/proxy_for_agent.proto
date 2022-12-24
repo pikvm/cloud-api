@@ -1,9 +1,9 @@
 syntax = "proto3";
-package proxy;
+package proxy_for_agent;
 
 import "google/protobuf/empty.proto";
 
-option go_package = "github.com/pikvm/cloud-api/proxy";
+option go_package = "github.com/pikvm/cloud-api/proxy_for_agent";
 
 enum ProxyEventType {
     PETYPE_UNSPECIFIED = 0;
@@ -69,7 +69,7 @@ message ConnectionMessage {
     }
 }
 
-service Proxy {
+service ProxyForAgent {
     rpc EventsChannel(stream AgentEvent) returns (stream ProxyEvent);
     rpc ConnectionChannel(stream ConnectionMessage) returns (stream ConnectionMessage);
 }

@@ -1,4 +1,0 @@
-syntax = "proto3";
-
-option go_package = "github.com/pikvm/cloud-api/hive";
-package hive;
