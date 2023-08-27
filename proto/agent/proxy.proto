@@ -1,0 +1,24 @@
+syntax = "proto3";
+package agent;
+
+option go_package = "github.com/pikvm/cloud-api/proto/agent";
+
+message ConnectionMessage {
+    message Header {
+        string cid = 1;
+        string connect_to = 2;
+    }
+    message HeaderResponse {
+        string error = 1;
+    }
+
+    oneof body {
+        bytes chunk = 1;
+        Header header = 2;
+        HeaderResponse header_response = 3;
+    }
+}
+
+service AgentForProxy {
+    rpc ConnectionChannel(stream ConnectionMessage) returns (stream ConnectionMessage);
+}

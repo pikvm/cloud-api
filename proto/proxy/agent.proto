@@ -1,0 +1,4 @@
+syntax = "proto3";
+package proxy;
+
+option go_package = "github.com/pikvm/cloud-api/proto/proxy";

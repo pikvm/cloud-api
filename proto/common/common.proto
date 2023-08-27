@@ -1,0 +1,10 @@
+syntax = "proto3";
+package common;
+
+option go_package = "github.com/pikvm/cloud-api/proto/common";
+
+import "google/protobuf/empty.proto";
+
+service Ping {
+    rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
+}
