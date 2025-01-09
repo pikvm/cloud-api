@@ -2,3 +2,7 @@ syntax = "proto3";
 package agent;
 
 option go_package = "github.com/pikvm/cloud-api/proto/agent";
+
+service AgentForHive {
+    //
+}
