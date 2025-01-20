@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-xrpc v1.1.0
 // - protoc             v5.29.2
-// source: agent/proxy.proto
+// source: proxyagent/agent.proto
 
-package agent
+package proxyagent
 
 import (
 	context "context"
@@ -32,7 +32,7 @@ func NewAgentForProxyClient(cc xrpc.InvokableConnection) AgentForProxyClient {
 }
 
 func (c *agentForProxyClient) ConnectionChannel(ctx context.Context, opts ...xrpc.CallOption) (AgentForProxy_ConnectionChannelClient, error) {
-	stream, err := c.cc.NewStream(ctx, "agent.AgentForProxy", "ConnectionChannel", opts...)
+	stream, err := c.cc.NewStream(ctx, "proxyagent.AgentForProxy", "ConnectionChannel", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -113,7 +113,7 @@ func (x *agentForProxyConnectionChannelServer) Recv() (*ConnectionMessage, error
 // It's only intended for direct use with xrpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AgentForProxy_ServiceDesc = xrpc.ServiceDesc{
-	ServiceName: "agent.AgentForProxy",
+	ServiceName: "proxyagent.AgentForProxy",
 	HandlerType: (*AgentForProxyServer)(nil),
 	Methods:     map[string]xrpc.MethodHandler{},
 	Streams: map[string]xrpc.StreamDesc{

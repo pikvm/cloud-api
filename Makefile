@@ -10,6 +10,5 @@ all:
 		--plugin=../../../my/go-xrpc/go-xrpc/cmd/protoc-gen-go-xrpc/protoc-gen-go-xrpc \
 		-I $(CURDIR)/proto \
 		common/common.proto \
-		agent/hive.proto agent/proxy.proto \
-		proxy/agent.proto \
-		hive/agent.proto
+		hiveagent/hive.proto hiveagent/agent.proto \
+		proxyagent/proxy.proto proxyagent/agent.proto

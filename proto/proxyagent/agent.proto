@@ -1,7 +1,7 @@
 syntax = "proto3";
-package agent;
+package proxyagent;
 
-option go_package = "github.com/pikvm/cloud-api/proto/agent";
+option go_package = "github.com/pikvm/cloud-api/proto/proxyagent";
 
 message ConnectionMessage {
     message Header {

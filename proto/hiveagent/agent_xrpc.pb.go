@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-xrpc v1.1.0
 // - protoc             v5.29.2
-// source: agent/hive.proto
+// source: hiveagent/agent.proto
 
-package agent
+package hiveagent
 
 import (
 	xrpc "github.com/xornet-sl/go-xrpc/xrpc"
@@ -48,7 +48,7 @@ func RegisterAgentForHiveServer(s xrpc.ServiceRegistrar, srv AgentForHiveServer)
 // It's only intended for direct use with xrpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AgentForHive_ServiceDesc = xrpc.ServiceDesc{
-	ServiceName: "agent.AgentForHive",
+	ServiceName: "hiveagent.AgentForHive",
 	HandlerType: (*AgentForHiveServer)(nil),
 	Methods:     map[string]xrpc.MethodHandler{},
 	Streams:     map[string]xrpc.StreamDesc{},

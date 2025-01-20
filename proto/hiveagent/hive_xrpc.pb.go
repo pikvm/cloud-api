@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-xrpc v1.1.0
 // - protoc             v5.29.2
-// source: hive/agent.proto
+// source: hiveagent/hive.proto
 
-package hive
+package hiveagent
 
 import (
 	context "context"
@@ -22,7 +22,8 @@ const _ = xrpc.SupportPackageIsVersion1
 
 // HiveForAgentClient is the client API for HiveForAgent service.
 type HiveForAgentClient interface {
-	RegisterAgent(ctx context.Context, in *AgentInfo, opts ...xrpc.CallOption) (*emptypb.Empty, error)
+	// rpc RegisterAgent(AgentInfo) returns (google.protobuf.Empty);
+	WhoAmI(ctx context.Context, in *emptypb.Empty, opts ...xrpc.CallOption) (*AgentInfo, error)
 	GetAvailableProxies(ctx context.Context, in *emptypb.Empty, opts ...xrpc.CallOption) (*AvailableProxies, error)
 }
 
@@ -34,9 +35,9 @@ func NewHiveForAgentClient(cc xrpc.InvokableConnection) HiveForAgentClient {
 	return &hiveForAgentClient{cc}
 }
 
-func (c *hiveForAgentClient) RegisterAgent(ctx context.Context, in *AgentInfo, opts ...xrpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "hive.HiveForAgent", "RegisterAgent", in, out, opts...)
+func (c *hiveForAgentClient) WhoAmI(ctx context.Context, in *emptypb.Empty, opts ...xrpc.CallOption) (*AgentInfo, error) {
+	out := new(AgentInfo)
+	err := c.cc.Invoke(ctx, "hiveagent.HiveForAgent", "WhoAmI", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -45,7 +46,7 @@ func (c *hiveForAgentClient) RegisterAgent(ctx context.Context, in *AgentInfo, o
 
 func (c *hiveForAgentClient) GetAvailableProxies(ctx context.Context, in *emptypb.Empty, opts ...xrpc.CallOption) (*AvailableProxies, error) {
 	out := new(AvailableProxies)
-	err := c.cc.Invoke(ctx, "hive.HiveForAgent", "GetAvailableProxies", in, out, opts...)
+	err := c.cc.Invoke(ctx, "hiveagent.HiveForAgent", "GetAvailableProxies", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +57,8 @@ func (c *hiveForAgentClient) GetAvailableProxies(ctx context.Context, in *emptyp
 // All implementations must embed UnimplementedHiveForAgentServer
 // for forward compatibility
 type HiveForAgentServer interface {
-	RegisterAgent(context.Context, *AgentInfo) (*emptypb.Empty, error)
+	// rpc RegisterAgent(AgentInfo) returns (google.protobuf.Empty);
+	WhoAmI(context.Context, *emptypb.Empty) (*AgentInfo, error)
 	GetAvailableProxies(context.Context, *emptypb.Empty) (*AvailableProxies, error)
 	mustEmbedUnimplementedHiveForAgentServer()
 }
@@ -65,8 +67,8 @@ type HiveForAgentServer interface {
 type UnimplementedHiveForAgentServer struct {
 }
 
-func (UnimplementedHiveForAgentServer) RegisterAgent(context.Context, *AgentInfo) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RegisterAgent not implemented")
+func (UnimplementedHiveForAgentServer) WhoAmI(context.Context, *emptypb.Empty) (*AgentInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method WhoAmI not implemented")
 }
 func (UnimplementedHiveForAgentServer) GetAvailableProxies(context.Context, *emptypb.Empty) (*AvailableProxies, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAvailableProxies not implemented")
@@ -77,8 +79,8 @@ func RegisterHiveForAgentServer(s xrpc.ServiceRegistrar, srv HiveForAgentServer)
 	s.RegisterService(&HiveForAgent_ServiceDesc, srv)
 }
 
-func _HiveForAgent_RegisterAgent_Handler(srv interface{}, ctx context.Context, in proto.Message) (proto.Message, error) {
-	return srv.(HiveForAgentServer).RegisterAgent(ctx, in.(*AgentInfo))
+func _HiveForAgent_WhoAmI_Handler(srv interface{}, ctx context.Context, in proto.Message) (proto.Message, error) {
+	return srv.(HiveForAgentServer).WhoAmI(ctx, in.(*emptypb.Empty))
 }
 
 func _HiveForAgent_GetAvailableProxies_Handler(srv interface{}, ctx context.Context, in proto.Message) (proto.Message, error) {
@@ -89,10 +91,10 @@ func _HiveForAgent_GetAvailableProxies_Handler(srv interface{}, ctx context.Cont
 // It's only intended for direct use with xrpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var HiveForAgent_ServiceDesc = xrpc.ServiceDesc{
-	ServiceName: "hive.HiveForAgent",
+	ServiceName: "hiveagent.HiveForAgent",
 	HandlerType: (*HiveForAgentServer)(nil),
 	Methods: map[string]xrpc.MethodHandler{
-		"RegisterAgent":       _HiveForAgent_RegisterAgent_Handler,
+		"WhoAmI":              _HiveForAgent_WhoAmI_Handler,
 		"GetAvailableProxies": _HiveForAgent_GetAvailableProxies_Handler,
 	},
 	Streams: map[string]xrpc.StreamDesc{},

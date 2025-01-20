@@ -5,6 +5,20 @@ option go_package = "github.com/pikvm/cloud-api/proto/common";
 
 import "google/protobuf/empty.proto";
 
+message AgentRouters {
+    message HttpRouter {
+        string fqdn = 1;
+        string http_connect_to = 2;
+        string https_connect_to = 3;
+    }
+    message TcpRouter {
+        string bind_to = 1;
+        string connect_to = 2;
+    }
+    repeated HttpRouter http_routers = 1;
+    repeated TcpRouter tcp_routers = 2;
+}
+
 service Ping {
     rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty);
 }

@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-xrpc v1.1.0
 // - protoc             v5.29.2
-// source: proxy/agent.proto
+// source: proxyagent/proxy.proto
 
-package proxy
+package proxyagent
 
 import (
 	xrpc "github.com/xornet-sl/go-xrpc/xrpc"
@@ -48,7 +48,7 @@ func RegisterProxyForAgentServer(s xrpc.ServiceRegistrar, srv ProxyForAgentServe
 // It's only intended for direct use with xrpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ProxyForAgent_ServiceDesc = xrpc.ServiceDesc{
-	ServiceName: "proxy.ProxyForAgent",
+	ServiceName: "proxyagent.ProxyForAgent",
 	HandlerType: (*ProxyForAgentServer)(nil),
 	Methods:     map[string]xrpc.MethodHandler{},
 	Streams:     map[string]xrpc.StreamDesc{},

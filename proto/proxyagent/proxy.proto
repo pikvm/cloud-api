@@ -1,0 +1,8 @@
+syntax = "proto3";
+package proxyagent;
+
+option go_package = "github.com/pikvm/cloud-api/proto/proxyagent";
+
+service ProxyForAgent {
+    //
+}
