@@ -1,8 +1,0 @@
-syntax = "proto3";
-package hiveagent;
-
-option go_package = "github.com/pikvm/cloud-api/proto/hiveagent";
-
-service AgentForHive {
-    //
-}
