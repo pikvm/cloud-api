@@ -13,6 +13,7 @@ var (
 	ErrBadRequest         = register(New(10002, http.StatusBadRequest, "bad request"))
 	ErrUnauthorized       = register(New(10003, http.StatusUnauthorized, "unauthorized"))
 	ErrForbidden          = register(New(10004, http.StatusForbidden, "forbidden"))
+	ErrTooManyRequests    = register(New(10005, http.StatusTooManyRequests, "too many requests"))
 	ErrCSRFMismatch       = register(derive(10101, "CSRF token mismatch", ErrBadRequest))
 	ErrBadArgument        = register(derive(10102, "bad argument", ErrBadRequest))
 	ErrCantParseRequest   = register(derive(10103, "can not parse the request", ErrBadRequest))
