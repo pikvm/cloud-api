@@ -34,6 +34,7 @@ var (
 	ErrProxyNotFound      = register(derive(20301, "proxy not found", ErrNotFound))
 	ErrProxyAlreadyExists = register(derive(20302, "proxy already exists", ErrBadRequest))
 	ErrNoProxiesAvailable = register(derive(20303, "no proxies available", ErrNotFound))
+	ErrProxyDisabled      = register(derive(20304, "proxy is disabled", ErrForbidden))
 
 	ErrHttpRouterNotFound      = register(derive(20401, "http router not found", ErrNotFound))
 	ErrHttpRouterAlreadyExists = register(derive(20402, "http router already exists", ErrBadRequest))
