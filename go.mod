@@ -1,9 +1,9 @@
 module github.com/pikvm/cloud-api
 
-go 1.24
+go 1.25
 
 require (
-	github.com/xornet-sl/go-xrpc v0.0.11
+	github.com/xornet-sl/go-xrpc v0.0.12
 	google.golang.org/grpc v1.75.0
 	google.golang.org/protobuf v1.36.7
 )
