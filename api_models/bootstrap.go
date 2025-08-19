@@ -1,7 +1,8 @@
 package api_models
 
 type BootstrapRedirect struct {
-	RedirectURL string `json:"redirect_url"`
+	BootstrapToken string `json:"bootstrap_token"`
+	RedirectURL    string `json:"redirect_url"`
 }
 
 type BootstrapResult struct {
