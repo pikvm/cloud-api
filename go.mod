@@ -5,7 +5,7 @@ go 1.27
 toolchain go1.27.3
 
 require (
-	github.com/xornet-sl/go-xrpc v0.0.16
+	github.com/xornet-sl/go-xrpc v0.0.17
 	google.golang.org/grpc v1.85.0
 	google.golang.org/protobuf v1.36.12
 )
